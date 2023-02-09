@@ -1,0 +1,30 @@
+{
+  "name": "cmdye",
+  "version": "0.1.0",
+  "description": "A tiny tool to colorify console messages.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santosned/cmdye.git"
+  },
+  "keywords": [
+    "ansi",
+    "color",
+    "colors",
+    "colours",
+    "console",
+    "terminal",
+    "style",
+    "string",
+    "cli"
+  ],
+  "author": "E. M. Santos <santosned@proton.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/santosned/cmdye/issues"
+  },
+  "homepage": "https://github.com/santosned/cmdye#readme"
+}
