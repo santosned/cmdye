@@ -4,6 +4,7 @@ coverage
 tests
 out
 node_modules
+.github
 .eslintrc.json
 .prettierignore
 .prettierrc
