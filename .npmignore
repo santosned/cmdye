@@ -1,0 +1,13 @@
+docs
+package
+coverage
+tests
+out
+node_modules
+.eslintrc.json
+.prettierignore
+.prettierrc
+rollup.config.js
+jest.config.js
+tsconfig.json
+*.tgz
