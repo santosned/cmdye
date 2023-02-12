@@ -1,10 +1,14 @@
 # CmDye
 
+![GitHub license](https://img.shields.io/github/license/santosned/cmdye?style=flat&colorA=black&colorB=black)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/santosned/cmdye/node.js.yml?style=flat&colorA=black&colorB=black)
+![GitHub issues](https://img.shields.io/github/issues/santosned/cmdye?style=flat&colorA=black&colorB=black)
+
 > A tiny tool to colorify console messages
 
-**CmDye** strives to be a simple but effective solution for making personalized console messages. Whether for your everyday `console.log()` or for seamless integration with more sophisticated logger tools like **Winston**.
+**CmDye** strives to be a simple but effective solution for making personalized console messages. Whether for your everyday `console.log()` or for seamless integration with more sophisticated logger tools like [Winston](https://www.npmjs.com/package/winston).
 
-⚠️ Currently, **CmDye** is in its **early stages**, which implies that the API could undergo major revisions at any time. Please **do not use this in production** until a stable release is available.
+⚠️ Currently, **CmDye** is in its **early stages**, which implies that the API could undergo major revisions at any time. Please **do not use this on production** until a stable release is available.
 
 ## Features
 
@@ -21,7 +25,7 @@
 
 After installing the `cmdye` package you can create a message like this:
 
-![Preview of getting started section](docs/assets/cmdye-preview.webp)
+![Preview of getting started section](https://raw.githubusercontent.com/santosned/cmdye/main/docs/assets/cmdye-preview.webp)
 
 This message was build using the string substitution patterns:
 
@@ -35,7 +39,7 @@ Format (`%f`) or Closure (`%c`) are unique to **CmDye**. Up to this release ther
 
 ## API
 
-**CmDye** may be the ideal option for creating pre-formatted messages. The API is being carefully built to allow this while also not badly impacting bundle size or performance.
+**CmDye** may be the ideal option for creating pre-formatted console messages. The API is being carefully built to allow this while also not badly impacting bundle size or performance.
 
 ⚠️ **Note:** Some escape codes are still being tested, which means some escape codes might not work in some terminals or edge cases. If you find one of these bugs please [report it](https://github.com/santosned/cmdye/issues).
 
