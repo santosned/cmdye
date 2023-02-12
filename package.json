@@ -9,8 +9,10 @@
     "access": "public"
   },
   "scripts": {
-    "prelint": "prettier --write .",
+    "prettier": "prettier --write .",
+    "prettier-check": "prettier --check package/**/*.ts",
     "lint": "eslint . --ext .ts --fix",
+    "lint-check": "eslint package/** --ext .ts",
     "dev": "ts-node package/cmdye.ts",
     "types": "tsc --out out/index.js",
     "build": "rollup --config --bundleConfigAsCjs",
