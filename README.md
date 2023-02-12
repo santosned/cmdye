@@ -1,6 +1,6 @@
 # CmDye
 
-![GitHub](https://img.shields.io/github/license/santosned/cmdye?style=flat&colorA=black&colorB=black)
+![GitHub license](https://img.shields.io/github/license/santosned/cmdye?style=flat&colorA=black&colorB=black)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/santosned/cmdye/node.js.yml?style=flat&colorA=black&colorB=black)
 ![GitHub issues](https://img.shields.io/github/issues/santosned/cmdye?style=flat&colorA=black&colorB=black)
 
