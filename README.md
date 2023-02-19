@@ -31,13 +31,13 @@ cmdye('%cConsole %cmessages %cdye').apply('magenta,italic', 'yellow', 'cyan');
 Create messages without having to import multiple functions or handle dozens of chained functions:
 
 ```js
-const warn = (msg) => cmdye('%cWARN%c', msg).apply('yellow,bold', 'reset-bold');
+const warn = (msg) => cmdye('%cWARN%c', msg).apply('yellow,bold', '!bold');
 
-const error = (msg) => cmdye('%cERROR%c', msg).apply('red,bold', 'reset-bold');
+const error = (msg) => cmdye('%cERROR%c', msg).apply('red,bold', '!bold');
 
-const info = (msg) => cmdye('%cINFO%c', msg).apply('blue,bold', 'reset-bold');
+const info = (msg) => cmdye('%cINFO%c', msg).apply('blue,bold', '!bold');
 
-const debug = (msg) => cmdye('%cDEBUG%c', msg).apply('magenta,bold', 'reset-bold,dim');
+const debug = (msg) => cmdye('%cDEBUG%c', msg).apply('magenta,bold', '!bold,dim');
 ```
 
 ## API

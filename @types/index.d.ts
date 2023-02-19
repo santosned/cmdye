@@ -26,7 +26,7 @@ declare type CmDye = {
 /** Colorify console message.
  * ```js
  * const warn = (msg) => {
- *   return cmdye('%cWARN%c', msg).apply('bold,yellow', 'reset-bold');
+ *   return cmdye('%cWARN%c', msg).apply('bold,yellow', '!bold');
  * }
  *
  * console.log(warn('this is a warning message'));
