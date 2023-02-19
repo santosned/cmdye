@@ -1,5 +1,4 @@
-import terser from '@rollup/plugin-terser';
-import typescript from '@rollup/plugin-typescript';
+import { swc, minify } from 'rollup-plugin-swc3';
 
 export default {
   input: 'package/index.ts',
@@ -14,15 +13,15 @@ export default {
     },
   ],
   plugins: [
-    typescript({
-      compilerOptions: { declaration: false, emitDeclarationOnly: false },
+    swc({
+      include: /\.[t]s?$/,
+      jsc: {},
     }),
-    terser({
-      ecma: 5,
-      module: true,
+    minify({
+      compress: true,
       toplevel: true,
-      compress: { pure_getters: true },
-      format: { quote_style: 'original' },
+      mangle: true,
+      keepFnames: true,
     }),
   ],
 };
