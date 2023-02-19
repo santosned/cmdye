@@ -1,6 +1,6 @@
 {
   "name": "cmdye",
-  "version": "0.1.0",
+  "version": "1.0.0-beta",
   "description": "A tiny tool to colorify console messages.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

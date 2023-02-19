@@ -4,88 +4,61 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/santosned/cmdye/node.js.yml?style=flat&colorA=black&colorB=black)
 ![GitHub issues](https://img.shields.io/github/issues/santosned/cmdye?style=flat&colorA=black&colorB=black)
 
-> A tiny tool to colorify console messages
-
-**CmDye** strives to be a simple but effective solution for making personalized console messages. Whether for your everyday `console.log()` or for seamless integration with more sophisticated logger tools like [Winston](https://www.npmjs.com/package/winston).
-
-⚠️ Currently, **CmDye** is in its **early stages**, which implies that the API could undergo major revisions at any time. Please **do not use this on production** until a stable release is available.
-
-## Features
-
-- CSS-like color names
-- String substitution patterns (Supports multi lines)
-- _Italic_, **bold** & much more
-- Compacted character escape codes
-- Ships with type definitions
-- Minified bundle
-- Works on **CommonJS** or **ES Modules**
-- **100%** test coverage
+**CmDye** is a tiny tool to colorify console messages. Whether for your everyday [**console.log()**](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) or for seamless integration with more sophisticated logger tools.
 
 ## Getting started
 
 After installing the `cmdye` package you can create a message like this:
 
-![Preview of getting started section](https://raw.githubusercontent.com/santosned/cmdye/main/docs/assets/cmdye-preview.webp)
+<img width="300" src="docs/assets/1-preview.webp" alt="Preview of getting started section" >
 
 This message was build using the string substitution patterns:
 
 ```js
 const cmdye = require('cmdye');
 
-cmdye('%fConsole%c %fmessages%c %fdye%c').color('lightmagenta', 'lightyellow', 'lightcyan').toString();
+cmdye('%cConsole %cmessages %cdye').apply('magenta,italic', 'yellow', 'cyan');
 ```
 
-Format (`%f`) or Closure (`%c`) are unique to **CmDye**. Up to this release there's only these two patterns, but in future releases more might be added.
+`cmdye` function allows you to define the message, and `.apply()` to select which colors should be applied to the message.
+
+### Examples
+
+#### Console logs
+
+<img width="600" src="docs/assets/2-preview.webp" alt="Preview of warn, error, info and debug messages" >
+
+Create messages without having to import multiple functions or handle dozens of chained functions:
+
+```js
+const warn = (msg) => cmdye('%cWARN%c', msg).apply('yellow,bold', 'reset-bold');
+
+const error = (msg) => cmdye('%cERROR%c', msg).apply('red,bold', 'reset-bold');
+
+const info = (msg) => cmdye('%cINFO%c', msg).apply('blue,bold', 'reset-bold');
+
+const debug = (msg) => cmdye('%cDEBUG%c', msg).apply('magenta,bold', 'reset-bold,dim');
+```
 
 ## API
 
-**CmDye** may be the ideal option for creating pre-formatted console messages. The API is being carefully built to allow this while also not badly impacting bundle size or performance.
+### cmdye(...msg: unknown[])
 
-⚠️ **Note:** Some escape codes are still being tested, which means some escape codes might not work in some terminals or edge cases. If you find one of these bugs please [report it](https://github.com/santosned/cmdye/issues).
+The `cmdye()` function can take **any** arguments, from numbers and strings to objects.
 
-### cmdye(...messages: string[])
+<img width="600" src="docs/assets/3-preview.webp" alt="Preview of accepted cmdye function arguments" >
 
-```js
-cmdye('Console messages dye');
-```
+#### .apply(...codes: AnyCodes[])
 
-### .toString()
+The `.apply()` method ships with types for all available codes.
 
-`toString` method will attempt to create an string containing all the customization defined by the user:
+<img width="600" src="docs/assets/4-preview.webp" alt="Preview of autocomplete in the apply method" >
 
-```js
-cmdye('Console messages dye').toString();
-```
+## Performance
 
-### .color(...name)
+On benchmarks **CmDye** wasn't as performant as other options, since it essentially requires loop cycles, which are less performant than straight calls to functions.
 
-`color` method will define the **foreground colors** that should be included in the string:
-
-```js
-cmdye('Console messages dye').color('green').toString();
-// Returns: '\x1B[32mConsole messages dye\x1B[0m'
-```
-
-### .bg(...name)
-
-`bg` method will define the **background colors** that should be included in the string:
-
-```js
-cmdye('Console messages dye').bg('blue').toString();
-// Returns: '\x1B[44mConsole messages dye\x1B[0m'
-```
-
-### .style(...name)
-
-`style` method will define the **text tranform style** that should be included in the string:
-
-```js
-cmdye('Console messages dye').style('italic', 'bold').toString();
-// Returns: '\x1B[3;1mConsole messages dye\x1B[0m'
-
-cmdye('%fConsole%c messages %fdye%c').style('italic', 'bold').style('italic', 'bold').toString();
-// Returns: '\x1B[3;1mConsole\x1B[0m messages \x1B[3;1mdye\x1B[0m'
-```
+Even though, each [console logs examples above](#console-logs) takes roughly `~1 ms` to be printed using [**console.log()**](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) tested on multiple benchmarks.
 
 ## Contributions
 
