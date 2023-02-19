@@ -50,7 +50,7 @@ The `cmdye()` function can take **any** arguments, from numbers and strings to o
 
 #### .apply(...codes: AnyCodes[])
 
-The `.apply()` method ships with types for all available codes.
+The `.apply()` method ships with types for [all supported escape codes](docs/ansi-escape-codes.md).
 
 <img width="600" src="docs/assets/4-preview.webp" alt="Preview of autocomplete in the apply method" >
 
