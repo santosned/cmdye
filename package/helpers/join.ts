@@ -24,8 +24,7 @@ export const join = (messages: unknown[]): string => {
     }
 
     res += part;
-    if (!messages[index + 1]) continue;
-    res += ' ';
+    if (part.length > 0 && index < messages.length - 1) res += ' ';
   }
 
   return res;
