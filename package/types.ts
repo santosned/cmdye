@@ -1,48 +1,25 @@
-export type Styles =
+type ColorNames = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+type StyleNames =
   | 'bold'
-  | 'light'
-  | 'bright'
   | 'dim'
-  | 'faint'
   | 'italic'
-  | 'cursive'
-  | 'underscore'
   | 'underline'
   | 'blink'
   | 'reverse'
-  | 'invert'
   | 'hidden'
-  | 'conceal'
   | 'strike-through'
-  | 'crossed-out'
-  | 'overline'
-  | ''
-  | null
-  | undefined;
+  | 'overline';
 
-export type Colors =
-  | 'black'
-  | 'red'
-  | 'green'
-  | 'yellow'
-  | 'blue'
-  | 'magenta'
-  | 'cyan'
-  | 'white'
-  | 'crimson'
-  | 'default'
-  | 'lightblack'
-  | 'lightred'
-  | 'lightgreen'
-  | 'lightyellow'
-  | 'lightblue'
-  | 'lightmagenta'
-  | 'lightcyan'
-  | 'lightwhite'
-  | ''
-  | null
-  | undefined;
+type Styles = StyleNames | 'reset' | `!${StyleNames}`;
+type Colors = ColorNames | `bg-${ColorNames}` | `!${'fg' | 'bg'}`;
+type FormatCodes = Styles | Colors;
 
-export type Backgrounds = Colors;
+export type AnyCodes = FormatCodes | `${FormatCodes},${string}` | '' | undefined | null;
 
-export type AnyCodes = Styles | Colors;
+export interface CmDyeMethods {
+  apply: {
+    (code: AnyCodes, ...optionalCodes: AnyCodes[]): string;
+  };
+}
+
+export type CmDye = { (message: unknown, ...optionalMessage: unknown[]): CmDyeMethods };

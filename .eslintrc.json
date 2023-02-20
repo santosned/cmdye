@@ -15,6 +15,7 @@
   "rules": {
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single", { "avoidEscape": true }],
-    "no-control-regex": "off"
+    "no-control-regex": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }

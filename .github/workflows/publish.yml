@@ -30,7 +30,7 @@ jobs:
         run: npm run lint
 
       - name: Run Jest tests
-        run: npm test
+        run: npm run test:ci
 
       - name: Run NPM pack
         run: npm pack

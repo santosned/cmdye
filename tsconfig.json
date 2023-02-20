@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "compilerOptions": {
     "target": "ES5",
     "module": "ESNext",
@@ -9,6 +14,6 @@
     "outDir": "dist",
     "strict": true
   },
-  "include": ["package"],
+  "include": ["package", "old/cmdye_old.ts"],
   "exclude": ["node_modules", "coverage"]
 }

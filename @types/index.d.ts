@@ -1,65 +1,35 @@
 export {};
-declare type Styles =
+type ColorNames = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+type StyleNames =
   | 'bold'
-  | 'light'
-  | 'bright'
   | 'dim'
-  | 'faint'
   | 'italic'
-  | 'cursive'
-  | 'underscore'
   | 'underline'
   | 'blink'
   | 'reverse'
-  | 'invert'
   | 'hidden'
-  | 'conceal'
   | 'strike-through'
-  | 'crossed-out'
-  | 'overline'
-  | ''
-  | null
-  | undefined;
-declare type Colors =
-  | 'black'
-  | 'red'
-  | 'green'
-  | 'yellow'
-  | 'blue'
-  | 'magenta'
-  | 'cyan'
-  | 'white'
-  | 'crimson'
-  | 'default'
-  | 'lightblack'
-  | 'lightred'
-  | 'lightgreen'
-  | 'lightyellow'
-  | 'lightblue'
-  | 'lightmagenta'
-  | 'lightcyan'
-  | 'lightwhite'
-  | ''
-  | null
-  | undefined;
-declare type Backgrounds = Colors;
-declare class CmDye {
-  private readonly message;
-  private backgrounds;
-  private colors;
-  private styles;
-  constructor(message: string, ...optionalMessages: string[]);
-  toString(): string;
-  style(...names: Styles[]): this;
-  bg(...names: Backgrounds[]): this;
-  color(...names: Colors[]): this;
+  | 'overline';
+type Styles = StyleNames | 'reset' | `!${StyleNames}`;
+type Colors = ColorNames | `bg-${ColorNames}` | `!${'fg' | 'bg'}`;
+type FormatCodes = Styles | Colors;
+declare type AnyCodes = FormatCodes | `${FormatCodes},${string}` | '' | undefined | null;
+declare interface CmDyeMethods {
+  /** Select which colors should be applied to the message.*/
+  apply: {
+    (code: AnyCodes, ...optionalCodes: AnyCodes[]): string;
+  };
 }
-/** Create new CmDye instance.
+declare type CmDye = {
+  (message: unknown, ...optionalMessage: unknown[]): CmDyeMethods;
+};
+/** Colorify console message.
  * ```js
- * const msg = 'Console messages dye'
- * cmdye(msg).style('italic','underline').color('lightblue').toString()
- * // Returns: '\x1B[94;3;4mConsole messages dye\x1B[0m'
- * ```
- * @since v0.1.0*/
-declare function cmdye(message: string, ...optionalMessage: string[]): CmDye;
+ * const warn = (msg) => {
+ *   return cmdye('%cWARN%c', msg).apply('bold,yellow', '!bold');
+ * }
+ *
+ * console.log(warn('this is a warning message'));
+ * ```*/
+declare const cmdye: CmDye;
 export = cmdye;
